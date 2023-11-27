@@ -55,24 +55,49 @@ createApp({
                 }
             ],
             activeSlide: 0,
+            intervalId : null,
         }
     },
-    methods:{
-        next(){
+    methods: {
+        next() {
             console.log('Ho cliccato su next');
             this.activeSlide++;
-            if(this.activeSlide > this.slides.length - 1){
-                this.activeSlide === 0;
+            if (this.activeSlide > this.slides.length - 1) {
+                this.activeSlide = 0;
             }
-            
+            console.log(this.activeSlide);
+            console.log(this.slides.length);
         },
-        prev(){
+        prev() {
             console.log('Ho cliccato su prev');
-            this.activeSlide --;
-            if(this.activeSlide < 0){
-                this.activeSlide === this.slides.length - 1;
+            this.activeSlide--;
+            if (this.activeSlide < 0) {
+                this.activeSlide = this.slides.length - 1;
             }
+
         },
+        selectImage(index) {
+            this.activeSlide = index;
+        },
+        autoPlay() {
+            this.intervalId = setInterval(() => {
+                this.activeSlide++;
+                if (this.activeSlide > this.slides.length - 1) {
+                    this.activeSlide = 0;
+                }
+            }, 3000);
+        },
+        onSliderEnter(){
+            clearInterval(this.intervalId);
+        }
+
+    },
+    mounted() {
+        this.autoPlay();
+
+
+
+
     }
 
 }).mount('#app');

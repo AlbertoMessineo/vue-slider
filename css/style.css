@@ -40,6 +40,9 @@
     background: #000;
     position: relative;
 }
+.pointer{
+    cursor: pointer;
+}
 
 .thumb {
     height: calc((300px) / 5);
