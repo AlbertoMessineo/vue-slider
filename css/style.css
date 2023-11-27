@@ -10,7 +10,9 @@
     justify-content: center;
     align-items: center;
 }
-
+[v-cloack]{
+    /* display: none; */
+}
 .item {
     float: left;
     width: 700px;
